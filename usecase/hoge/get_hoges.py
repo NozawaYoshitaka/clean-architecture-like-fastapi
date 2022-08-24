@@ -30,13 +30,16 @@ class GetHoges:
     def get_hoges(self) -> dict:
         """ ほげ一覧を取得するメインロジック """
 
-        try:
-            # クエリの実行と、結果の取得。情報を取得する。
-            query: str = HogeQueryU.get_hoges_query()
-            hoges: list[dict] = self.repository.select(query)
-        except InternalServerError:
-            # エラー時の返却値の設定
-            return self.presenter.api_form_with_error(f"ERROR: {query}")
+        # NOTE: Lambdaに設置するので、DBへのアクセスはしないようにした
+        # try:
+        #     # クエリの実行と、結果の取得。情報を取得する。
+        #     query: str = HogeQueryU.get_hoges_query()
+        #     hoges: list[dict] = self.repository.select(query)
+        # except InternalServerError:
+        #     # エラー時の返却値の設定
+        #     return self.presenter.api_form_with_error(f"ERROR: {query}")
+        #
+        # # 返却値の設定
+        # return self.presenter.data_count(len(hoges)).api_form_with_data(hoges)
 
-        # 返却値の設定
-        return self.presenter.data_count(len(hoges)).api_form_with_data(hoges)
+        return {"is_success": True}
