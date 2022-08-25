@@ -1,8 +1,8 @@
 from starlette.exceptions import HTTPException
 from werkzeug.exceptions import InternalServerError
 
-from adapters.presenter.presenter_interface import PresenterInterface
-from adapters.gateways.repository_gateway import RepositoryGateway
+from usecase.presenter.presenter_interface import PresenterInterface
+from usecase.gateways.repository_gateway import RepositoryGateway
 from entities.queries.hoge_query import HogeQueryU
 
 

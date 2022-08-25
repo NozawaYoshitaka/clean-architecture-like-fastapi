@@ -1,4 +1,4 @@
-from adapters.gateways.repository_gateway import RepositoryGateway
+from usecase.gateways.repository_gateway import RepositoryGateway
 from logging import getLogger
 import sqlalchemy
 
