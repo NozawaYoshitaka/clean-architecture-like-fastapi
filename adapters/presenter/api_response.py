@@ -1,6 +1,6 @@
 from typing import Optional
 
-from adapters.presenter.presenter_interface import PresenterInterface
+from usecase.interfaces.presenter_interface import PresenterInterface
 
 
 class APIResponse(PresenterInterface):

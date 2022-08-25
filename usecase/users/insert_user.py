@@ -1,8 +1,8 @@
 import ulid
 from werkzeug.exceptions import InternalServerError
 
-from adapters.presenter.presenter_interface import PresenterInterface
-from adapters.gateways.repository_gateway import RepositoryGateway
+from usecase.interfaces.presenter_interface import PresenterInterface
+from usecase.interfaces.repository_gateway import RepositoryGateway
 from entities.queries.user_query import UserQueryU
 
 

@@ -48,8 +48,7 @@ $ docker-compose down
 |   |_ /db # DBへの接続情報
 |
 |_ /adapters # adapter層
-|   |_ /gateways # アプリとDBの間のインターフェース
-|   |_ /presenter # UIの設定
+|   |_ /presenter # ユーザーインターフェース（for フロントエンド）の設定
 |
 |_ /usecase # usecase層。APIのメインロジックはここに記述する。
 |
