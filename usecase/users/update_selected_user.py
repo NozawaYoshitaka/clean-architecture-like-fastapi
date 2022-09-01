@@ -34,8 +34,8 @@ class UpdateSelectedUser:
 
         try:
             # クエリの実行と、結果の取得。情報を取得する。
-            query: str = UserQueryU.update_selected_user_query(user_id, user_name, mail_address, password)
-            self.repository.update(query)
+            query: list[dict] = UserQueryU.update_selected_user_query(user_id, user_name, mail_address, password)
+            self.repository.update(query['query'], query['values'])
         except InternalServerError:
             # エラー時の返却値の設定
             return self.presenter.api_form_with_error(f"ERROR: {query}")

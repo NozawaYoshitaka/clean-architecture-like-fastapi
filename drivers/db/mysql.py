@@ -30,18 +30,7 @@ class Mysql(RepositoryGateway):
         )
         return sqlalchemy.create_engine(database_url).connect()
 
-    def select(self, query: str) -> list[dict]:
-        """ 任意のクエリを実行し、結果を取得する """
-        with self.conn() as con:
-            try:
-                result = con.execute(query).all()
-            except Exception as e:
-                self.logger.error(f'Failed to execute query: {query}')
-                raise e
-            else:
-                return self._convert_to_dict_list(result)
-
-    def select_replace(self, query: str, *replacers) -> list[dict]:
+    def select(self, query: str, *replacers) -> list[dict]:
         """ 任意のパラメータを置換し、任意のクエリを実行し、結果を取得する """
         with self.conn() as con:
             try:
@@ -52,22 +41,22 @@ class Mysql(RepositoryGateway):
             else:
                 return self._convert_to_dict_list(result)
 
-    def insert(self, query: str):
+    def insert(self, query: str, *replacers):
         """ 任意のクエリを実行する """
-        self._no_response_execute(query)
+        self._no_response_execute(query, *replacers)
 
-    def update(self, query: str):
+    def update(self, query: str, *replacers):
         """ 任意のクエリを実行する """
-        self._no_response_execute(query)
+        self._no_response_execute(query, *replacers)
 
-    def delete(self, query: str):
+    def delete(self, query: str, *replacers):
         """ 任意のクエリを実行する """
-        self._no_response_execute(query)
+        self._no_response_execute(query, *replacers)
 
-    def _no_response_execute(self, query):
+    def _no_response_execute(self, query, *replacers):
         with self.conn() as con:
             try:
-                con.execute(query)
+                con.execute(sqlalchemy.sql.text(query), *replacers)
             except Exception as e:
                 self.logger.error(f'Failed to execute query: {query}')
                 raise e

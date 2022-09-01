@@ -31,11 +31,11 @@ class GetSelectedUser:
 
         try:
             # クエリの実行と、結果の取得。情報を取得する。
-            query: str = UserQueryU.get_selected_user_query(user_id)
-            users: list[dict] = self.repository.select(query)
+            query: list[dict] = UserQueryU.get_selected_user_query(user_id)
+            users: list[dict] = self.repository.select(query['query'], query['values'])
         except InternalServerError:
             # エラー時の返却値の設定
-            return self.presenter.api_form_with_error(f"ERROR: {query}")
+            return self.presenter.api_form_with_error(f"ERROR: {query['query']}")
 
         # 返却値の設定
         return self.presenter.data_count(len(users)).api_form_with_data(users[0])

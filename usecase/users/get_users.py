@@ -31,8 +31,8 @@ class GetUsers:
 
         try:
             # クエリの実行と、結果の取得。情報を取得する。
-            query: str = UserQueryU.get_users_query()
-            users: list[dict] = self.repository.select(query)
+            query: list[dict] = UserQueryU.get_users_query()
+            users: list[dict] = self.repository.select(query['query'])
         except InternalServerError:
             # エラー時の返却値の設定
             return self.presenter.api_form_with_error(f"ERROR: {query}")

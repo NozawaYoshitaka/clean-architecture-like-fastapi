@@ -30,8 +30,8 @@ class DeleteSelectedUser:
         """ 特定のユーザーを削除するメインロジック """
         try:
             # クエリの実行と、結果の取得。情報を取得する。
-            query: str = UserQueryU.delete_user_query(user_id)
-            self.repository.delete(query)
+            query: list[dict] = UserQueryU.delete_user_query(user_id)
+            self.repository.delete(query['query'], query['values'])
         except InternalServerError:
             # エラー時の返却値の設定
             return self.presenter.api_form_with_error(f"ERROR: {query}")

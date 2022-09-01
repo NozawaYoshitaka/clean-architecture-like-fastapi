@@ -36,11 +36,11 @@ class InsertSelectedUser:
 
         try:
             # クエリの実行と、結果の取得。情報を取得する。
-            query: str = UserQueryU.insert_user_query(new_user_id, user_name, mail_address, password)
-            self.repository.insert(query)
+            query: list[dict] = UserQueryU.insert_user_query(new_user_id, user_name, mail_address, password)
+            self.repository.insert(query['query'], query['values'])
         except InternalServerError:
             # エラー時の返却値の設定
-            return self.presenter.api_form_with_error(f"ERROR: {query}")
+            return self.presenter.api_form_with_error(f"ERROR: {query['query']}")
 
         # 返却値の設定
         return self.presenter.default_api_form()
