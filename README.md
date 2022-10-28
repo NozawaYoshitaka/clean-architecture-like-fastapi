@@ -12,7 +12,7 @@ FastAPI app SwaggerUI (http://localhost:8000/docs)
 ![image](https://user-images.githubusercontent.com/55648865/186562567-b13a4a76-dcf3-4ad5-98d2-671348eeec07.png)
 
 ### phpMyAdmin
-phpMyAdmin (http://localhost:8000/docs)
+phpMyAdmin (http://localhost:8080)
 
 mysqlサーバーにFastAPIとphpMyAdminから接続しており、phpMyAdminのGUIからデータを整形しつつ、開発をすすめることができるようにしています。
 ![image](https://user-images.githubusercontent.com/55648865/186562687-042c4ac4-8a38-4d5d-acc7-fa81dd19ca12.png)
